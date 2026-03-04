@@ -2,7 +2,7 @@ name: Collect Battery News
 
 on:
   schedule:
-    - cron: "0 * * * *"
+    - cron: "*/30 * * * *"
   workflow_dispatch:
 
 jobs:
@@ -12,5 +12,5 @@ jobs:
     steps:
       - name: Call News Collector
         run: |
-          curl -X POST https://YOUR-VERCEL-APP.vercel.app/api/collect \
-          -H "Authorization: Bearer YOUR_CRON_SECRET"
+          curl -X POST https://battery-intel-dashboard.vercel.app/api/collect \
+          -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}"
